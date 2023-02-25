@@ -6,6 +6,14 @@
 	$: ({ User } = data);
 </script>
 
+<p><a href="/">Go Back</a></p>
+
 {#if !$User.fetching}
-	We got the name: {$User.data?.getUser?.name}
+	{#if $User.errors}
+		{#each $User.errors as e}
+			Error: {e.message}
+		{/each}
+	{:else}
+		Success! User's name is: {$User.data?.getUser?.name}
+	{/if}
 {/if}

@@ -33,3 +33,7 @@ output "PUBLIC_AWS_APPSYNC_ENDPOINT" {
 output "PUBLIC_AWS_APPSYNC_WS_ENDPOINT" {
   value = module.appsync.appsync_graphql_api_uris["REALTIME"]
 }
+
+output "PUBLIC_AWS_REGION" {
+  value = var.aws_region
+}
