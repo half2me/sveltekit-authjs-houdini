@@ -1,0 +1,8 @@
+type User @aws_cognito_user_pools @aws_cognito_user_pools @aws_api_key {
+	id: ID!
+	name: String!
+}
+
+type Query {
+	getUser(id: ID!): User @aws_cognito_user_pools @aws_api_key
+}
