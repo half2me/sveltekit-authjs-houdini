@@ -69,9 +69,11 @@ resource "aws_cognito_user_pool_client" "client" {
   supported_identity_providers = ["COGNITO"]
   callback_urls = [
     "http://localhost:5173/auth/callback/cognito",
+    "https://sveltekit-authjs-houdini.pages.dev/auth/callback/cognito"
   ]
   logout_urls = [
     "http://localhost:5173/auth/logout",
+    "https://sveltekit-authjs-houdini.pages.dev/auth/logout"
   ]
 }
 
