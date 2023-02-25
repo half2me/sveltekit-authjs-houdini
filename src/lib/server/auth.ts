@@ -14,6 +14,7 @@ import { PUBLIC_AWS_REGION } from '$env/static/public';
 const issuer = `https://cognito-idp.${PUBLIC_AWS_REGION}.amazonaws.com/${AWS_COGNITO_USER_POOL_ID}`;
 export const handle = SvelteKitAuth({
 	secret: AUTH_SECRET,
+	trustHost: true,
 	providers: [
 		Cognito({
 			issuer,
