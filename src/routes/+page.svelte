@@ -1,2 +1,5 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+Welcome, look at the following users:
+
+<a href="/first">First user</a>
+<a href="/another">Another user</a>
+<a href="/and-another">And another user</a>
