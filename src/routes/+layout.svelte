@@ -36,7 +36,7 @@
 {#if data.session.user}
 	<p>
 		Hello {data.session.user.email}! Your token is valid for {secsLeft} secs.
-		<button on:click={signOut}> Logout </button>
+		<button on:click={() => signOut({ redirect: true, callbackUrl: '/logout' })}> Logout </button>
 	</p>
 	<textarea rows="4" cols="50">{data.session.access_token}</textarea>
 	<br />
