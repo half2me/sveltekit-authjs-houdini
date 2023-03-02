@@ -40,6 +40,10 @@ resource "aws_cognito_user_pool_domain" "domain" {
 }
 
 resource "aws_cognito_user_pool_client" "client" {
+  depends_on = [
+    aws_cognito_identity_provider.google,
+  ]
+
   name         = var.name
   user_pool_id = aws_cognito_user_pool.pool.id
 
@@ -66,7 +70,7 @@ resource "aws_cognito_user_pool_client" "client" {
     "profile",
   ]
 
-  supported_identity_providers = ["COGNITO"]
+  supported_identity_providers = ["COGNITO", "Google"]
   callback_urls = [
     "http://localhost:5173/auth/callback/cognito",
     "https://sveltekit-authjs-houdini.pages.dev/auth/callback/cognito"
@@ -86,6 +90,33 @@ resource "aws_cognito_identity_pool" "pool" {
     client_id               = aws_cognito_user_pool_client.client.id
     provider_name           = aws_cognito_user_pool.pool.endpoint
     server_side_token_check = false
+  }
+}
+
+resource "aws_cognito_identity_provider" "google" {
+  user_pool_id  = aws_cognito_user_pool.pool.id
+  provider_name = "Google"
+  provider_type = "Google"
+
+  provider_details = {
+    client_id        = var.google_app_id
+    client_secret    = var.google_app_secret
+    authorize_scopes = "profile email openid"
+
+    // workaround for terraform provider bug
+    attributes_url                = "https://people.googleapis.com/v1/people/me?personFields="
+    attributes_url_add_attributes = "true"
+    authorize_url                 = "https://accounts.google.com/o/oauth2/v2/auth"
+    oidc_issuer                   = "https://accounts.google.com"
+    token_request_method          = "POST"
+    token_url                     = "https://www.googleapis.com/oauth2/v4/token"
+  }
+
+  attribute_mapping = {
+    email       = "email"
+    username    = "sub"
+    given_name  = "given_name"
+    family_name = "family_name"
   }
 }
 
