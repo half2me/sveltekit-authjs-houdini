@@ -9,6 +9,5 @@ export const GET = (({ url }) => {
 		logout_uri: url.origin + '/'
 	});
 	const logoutUrl = `https://${AWS_COGNITO_DOMAIN}.auth.${PUBLIC_AWS_REGION}.amazoncognito.com/logout?${params}`;
-	console.log(logoutUrl);
 	throw redirect(302, logoutUrl);
 }) satisfies RequestHandler;

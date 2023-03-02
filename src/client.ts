@@ -4,7 +4,7 @@ import { getAccessToken } from '$lib/util';
 
 export default new HoudiniClient({
 	url: PUBLIC_AWS_APPSYNC_ENDPOINT,
-	fetchParams({ session }) {
+	fetchParams() {
 		const token = getAccessToken();
 		if (token) {
 			return { headers: { Authorization: token } };

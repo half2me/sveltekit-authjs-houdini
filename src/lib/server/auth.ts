@@ -42,7 +42,6 @@ export const handle = SvelteKitAuth({
 				return token;
 			} else {
 				// If the access token has expired, try to refresh it
-				console.log('refresh JWT');
 				try {
 					const response = await fetch(
 						`https://${AWS_COGNITO_DOMAIN}.auth.${PUBLIC_AWS_REGION}.amazoncognito.com/oauth2/token`,
