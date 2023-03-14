@@ -19,7 +19,8 @@ export const handle = SvelteKitAuth({
 		Cognito({
 			issuer,
 			clientId: AWS_COGNITO_USER_POOL_CLIENT_ID,
-			clientSecret: AWS_COGNITO_USER_POOL_CLIENT_SECRET
+			clientSecret: AWS_COGNITO_USER_POOL_CLIENT_SECRET,
+			checks: ['nonce', 'pkce']
 		}) as any
 	],
 	callbacks: {
