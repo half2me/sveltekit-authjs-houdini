@@ -20,7 +20,7 @@ export const handle = SvelteKitAuth({
 			issuer,
 			clientId: AWS_COGNITO_USER_POOL_CLIENT_ID,
 			clientSecret: AWS_COGNITO_USER_POOL_CLIENT_SECRET,
-			checks: ['nonce', 'pkce']
+			checks: ['pkce', 'nonce']
 		}) as any
 	],
 	callbacks: {
