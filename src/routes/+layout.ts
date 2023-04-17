@@ -1,5 +1,4 @@
 import type { LayoutLoad } from './$types';
-import { setClientSession } from '$houdini';
 import { setAccessToken } from '$lib/util';
 
 export const prerender = false;

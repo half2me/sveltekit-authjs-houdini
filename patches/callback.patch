@@ -1,0 +1,12 @@
+--- node_modules/@auth/core/lib/oauth/callback.js	2023-03-28 16:30:20
++++ node_modules/@auth/core/lib/oauth/callback.js	2023-04-17 14:11:07
+@@ -76,7 +76,8 @@
+     let profile = {};
+     let tokens;
+     if (provider.type === "oidc") {
+-        const result = await o.processAuthorizationCodeOpenIDResponse(as, client, codeGrantResponse);
++        const result = await o.processAuthorizationCodeOpenIDResponse(as, client, codeGrantResponse, nonce?.value ??
++o.expectNoNonce);
+         if (o.isOAuth2Error(result)) {
+             console.log("error", result);
+             throw new Error("TODO: Handle OIDC response body error");
