@@ -2,10 +2,10 @@
 
 /** @type {import('houdini').ConfigFile} */
 const config = {
-	watchSchema: {},
-	plugins: {
-		'houdini-svelte': {}
-	}
-};
+  watchSchema: {},
+  plugins: {
+    'houdini-svelte': {},
+  },
+}
 
-export default config;
+export default config

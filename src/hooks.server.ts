@@ -1,3 +1,3 @@
-import { handle } from '$lib/server/auth';
+import { handle } from '$lib/server/auth'
 
-export { handle };
+export { handle }
